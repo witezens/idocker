@@ -1,0 +1,33 @@
+# Ignore Docker-related files that should not be committed
+.dockerignore
+.env
+.env.*
+docker-compose.override.yml
+
+# Ignore logs, temporary, or unnecessary files
+*.log
+*.bak
+*.swp
+*.tmp
+
+# Ignore any backups of docker-compose files
+docker-compose.*.bak
+docker-compose.*~
+
+# Ignore container logs or runtime data
+*.pid
+*.sock
+*.lock
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore node_modules or other dependencies if included by mistake
+node_modules/

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus
+    ports:
+      - "8081:8081"
+      - "5002:5002"
+      - "5003:5003"
+    volumes:
+      - nexus-data:/nexus-data
+    restart: no
+
+volumes:
+  nexus-data:
+    driver: local

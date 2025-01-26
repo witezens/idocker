@@ -1,0 +1,21 @@
+services:
+  # service postgreSQL
+  dbpgl:
+    # image:tag
+    # por defecto se utiliza el tag latest
+    image: postgres:16.2
+    restart: on-failure
+    ports:
+      # local_machine_port:container_port
+      - "5432:5432"
+    environment:
+      # ENV_NAME:ENV_VALUE
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  db-data:
+    driver: local
