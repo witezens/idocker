@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:17.5
+    container_name: postgresql-17
+    command:
+      - "postgres"
+      - "-c"
+      - "log_statement=all" # none, ddl, mod, all
+      - "-c"
+      - "shared_buffers=512MB"
+      - "-c"
+      - "work_mem=16MB"
+      - "-c"
+      - "maintenance_work_mem=128MB" # vaacum,create index, alter table, analyze # datasets +100K update to 256MB
+    ports:
+      - "5433:5432"
+    mem_limit: 2g # total container mem
+    shm_size: 1g # /dev/shm (shared mem)
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/pgdata
+
+volumes:
+  postgres-data:
+  

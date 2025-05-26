@@ -1,0 +1,1 @@
+pg_resetwal "-D" "C:\Program Files\PostgreSQL\13\data" troubleshooting  for psql wal max_size 16mb if a server rebase this size the server not starts again

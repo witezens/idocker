@@ -1,0 +1,18 @@
+
+services:
+  sqledge:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: azure-sql-edge
+    mem_limit: 4g
+    shm_size: 1g
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "1"
+      MSSQL_SA_PASSWORD: "pp4sw0rd#s3c0r3"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:
