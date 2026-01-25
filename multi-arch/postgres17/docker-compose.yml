@@ -5,13 +5,13 @@ services:
     command:
       - "postgres"
       - "-c"
-      - "log_statement=all" # none, ddl, mod, all
+      - "log_statement=none" # none, ddl, mod, all
       - "-c"
       - "shared_buffers=512MB"
       - "-c"
       - "work_mem=16MB"
       - "-c"
-      - "maintenance_work_mem=128MB" # vaacum,create index, alter table, analyze # datasets +100K update to 256MB
+      - "maintenance_work_mem=256MB" # vaacum,create index, alter table, analyze # datasets +100K update to 256MB
     ports:
       - "5433:5432"
     mem_limit: 2g # total container mem
@@ -23,8 +23,5 @@ services:
       - POSTGRES_USER=postgres
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - postgres-data:/var/lib/postgresql/data/pgdata
-
-volumes:
-  postgres-data:
+      - /Users/wilmertezen/Developer/Data/postgresql17:/var/lib/postgresql/data/pgdata
   
