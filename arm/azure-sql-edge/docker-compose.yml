@@ -11,8 +11,10 @@ services:
     environment:
       ACCEPT_EULA: "1"
       MSSQL_SA_PASSWORD: "pp4sw0rd#s3c0r3"
+      MSSQL_AGENT_ENABLED: "false"  # No necesario en desarrollo
     volumes:
       - sql_data:/var/opt/mssql
+      - ./init-dev.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
 volumes:
   sql_data:
