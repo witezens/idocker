@@ -2,6 +2,7 @@
 .dockerignore
 .env
 .env.*
+!.env.example
 docker-compose.override.yml
 
 # Ignore logs, temporary, or unnecessary files
